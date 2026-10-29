@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Discover African brands, explore locally made products, and connect with the businesses building Africa with Daya.">
+  <title>Daya — Discover the brands building Africa</title>
+  <style>
+    :root { color-scheme:light; --bg:#fff; --fg:#111; --muted:#626262; --line:#e7e7e7; --panel:#f7f7f5; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; background:var(--bg); }
+    body { margin:0; min-height:100vh; background:var(--bg); color:var(--fg); font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; }
+    .wrap { width:min(100% - 48px,1100px); margin-inline:auto; }
+    header { height:78px; display:flex; align-items:center; background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:5; }
+    .header-inner { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .logo { display:inline-flex; align-items:center; min-height:34px; text-decoration:none; }
+    .logo img { display:block; width:auto; max-width:142px; max-height:42px; object-fit:contain; }
+    .logo-fallback { font-size:28px; font-weight:800; letter-spacing:-1.7px; }
+    .nav { display:flex; align-items:center; gap:28px; }
+    .nav a { color:#555; font-size:13px; font-weight:550; text-decoration:none; }
+    .nav a:hover { color:#000; }
+    .nav .nav-cta { border:1px solid #111; border-radius:999px; padding:11px 17px; color:#fff; background:#111; }
+    .nav .nav-cta:hover { background:#333; }
+    .hero { padding:clamp(84px,12vw,145px) 0 108px; border-bottom:1px solid var(--line); }
+    .hero-content { max-width:900px; }
+    .launch-panel { display:flex; flex-direction:column; align-items:flex-start; gap:14px; padding:0; margin:0 0 34px; max-width:100%; }
+    .launch-label { margin:0; color:#111; font-size:12px; font-weight:750; letter-spacing:.16em; text-transform:uppercase; }
+    .eyebrow,.section-kicker { color:#696969; font-size:11px; letter-spacing:.18em; text-transform:uppercase; font-weight:650; margin:0 0 22px; }
+    h1 { font-size:clamp(48px,8.7vw,100px); line-height:.98; letter-spacing:-.075em; font-weight:720; max-width:900px; margin:0; }
+    .headline-accent { color:#B8860B; }
+    .hero-copy { color:#555; font-size:clamp(17px,2.2vw,20px); line-height:1.8; max-width:650px; margin:28px 0 0; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+    .button { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:48px; padding:14px 20px; border:1px solid #111; border-radius:999px; text-decoration:none; font-size:13px; font-weight:650; transition:transform .18s ease,background .18s ease,color .18s ease; }
+    .button:hover { transform:translateY(-2px); }
+    .button.primary { background:#111; color:#fff; }
+    .button.primary:hover { background:#333; }
+    .button.secondary { border-color:#d0d0d0; color:#222; background:#fff; }
+    .button.secondary:hover { border-color:#111; background:#f8f8f8; }
+    .hero-note { color:#888; font-size:12px; margin:22px 0 0; }
+    .store-coming { margin-top:0; }
+    .store-badges { display:flex; flex-wrap:wrap; gap:14px; }
+    .store-badge { display:flex; align-items:center; gap:16px; min-width:250px; min-height:82px; padding:18px 22px; border:1px solid #d7d7d7; border-radius:14px; background:#fff; }
+    .store-badge svg { width:34px; height:34px; flex:0 0 34px; }
+    .store-badge-copy { display:flex; flex-direction:column; gap:0; }
+    .store-badge-copy small { display:none; }
+    .store-badge-copy strong { color:#111; font-size:18px; line-height:1.25; font-weight:750; }
+    section.content-section { padding:92px 0; border-bottom:1px solid var(--line); }
+    .section-head { display:grid; grid-template-columns:minmax(0,.8fr) minmax(260px,1fr); gap:54px; align-items:start; margin-bottom:42px; }
+    .section-kicker { margin-bottom:18px; }
+    h2 { font-size:clamp(34px,4.8vw,56px); line-height:1.03; letter-spacing:-.06em; font-weight:680; margin:0; }
+    .section-intro { color:#626262; font-size:16px; line-height:1.85; margin:4px 0 0; max-width:530px; }
+    .feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .feature { background:var(--panel); border:1px solid #ededeb; padding:28px; min-height:230px; border-radius:14px; transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
+    .feature:hover { transform:translateY(-3px); border-color:#d8d8d5; box-shadow:0 12px 30px rgba(0,0,0,.045); }
+    .feature-number { color:#777; font-size:10px; letter-spacing:.13em; font-weight:700; }
+    .feature-mark { display:flex; align-items:center; justify-content:center; width:42px; height:42px; border:1px solid #dcdcd8; background:#fff; border-radius:12px; font-size:19px; margin:25px 0 23px; color:#111; }
+    h3 { font-size:19px; letter-spacing:-.035em; margin:0 0 12px; font-weight:680; }
+    .feature p,.step p { color:#626262; font-size:14px; line-height:1.8; margin:0; }
+    .statement { padding:86px 0; background:#f7f7f5; border-bottom:1px solid var(--line); }
+    .statement blockquote { margin:0; max-width:980px; font-size:clamp(30px,5.2vw,62px); letter-spacing:-.06em; line-height:1.12; font-weight:650; }
+    .statement blockquote span { color:#B8860B; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:34px; }
+    .step { border-top:1px solid #d1d1ce; padding-top:22px; }
+    .step-number { font-size:11px; font-weight:700; letter-spacing:.1em; color:#888; margin-bottom:30px; }
+    .step h3 { font-size:21px; }
+    .audience { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .audience-card { padding:34px; background:var(--panel); border:1px solid #ededeb; border-radius:14px; min-height:230px; }
+    .audience-label { color:#777; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.16em; margin:0 0 22px; }
+    .audience-card p:not(.audience-label) { color:#626262; line-height:1.85; font-size:15px; margin:0; }
+    .closing { padding:100px 0 110px; }
+    .closing h2 { max-width:820px; }
+    .closing p:not(.section-kicker) { color:#626262; font-size:16px; line-height:1.85; max-width:610px; margin:24px 0 0; }
+    footer { border-top:1px solid var(--line); background:#fafaf9; }
+    .footer-inner { min-height:84px; display:flex; align-items:center; justify-content:space-between; gap:22px; }
+    .copyright { font-size:12px; color:#888; margin:0; }
+    .links { display:flex; gap:24px; flex-wrap:wrap; }
+    .links a { font-size:12px; color:#555; text-decoration:none; }
+    .links a:hover { color:#000; text-decoration:underline; text-underline-offset:4px; }
+    a:focus-visible { outline:2px solid #111; outline-offset:5px; }
+    @media (max-width:760px) { .section-head { grid-template-columns:1fr; gap:20px; } .feature-grid { grid-template-columns:repeat(2,1fr); } .steps { grid-template-columns:1fr; gap:28px; } .step-number { margin-bottom:18px; } }
+    @media (max-width:560px) { .store-badges { width:100%; flex-direction:column; } .store-badge { min-width:0; width:100%; } .wrap { width:min(100% - 36px,1100px); } header { height:72px; } .nav { gap:14px; } .nav a:not(.nav-cta) { display:none; } .nav .nav-cta { padding:10px 13px; font-size:12px; } .hero { padding:76px 0; } section.content-section { padding:68px 0; } .feature-grid,.audience { grid-template-columns:1fr; } .feature { min-height:auto; padding:25px; } .feature-mark { margin:22px 0 18px; } .statement { padding:66px 0; } .closing { padding:74px 0 82px; } .footer-inner { align-items:flex-start; flex-direction:column; justify-content:center; padding:22px 0; gap:14px; } .links { gap:18px; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; animation:none !important; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap header-inner">
+      <a class="logo" href="index.html" aria-label="Daya home">
+        <!-- Add the original logo image here as daya-logo.png to preserve its exact design. -->
+        <img src="daya-logo.png" alt="Daya" onerror="this.hidden=true; this.nextElementSibling.hidden=false">
+        <span class="logo-fallback" hidden>Daya</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a class="nav-cta" href="#about">About Daya</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-content">
+          <div class="launch-panel" aria-label="Daya mobile app stores">
+            <p class="launch-label">Launching soon on</p>
+            <div class="store-coming" aria-label="Daya mobile app stores">
+              <div class="store-badges">
+                <div class="store-badge" aria-label="Coming soon on the Apple App Store">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.54c.02 2.14 1.88 2.85 1.9 2.86-.02.05-.3 1.04-.98 2.06-.59.88-1.2 1.75-2.16 1.77-.94.02-1.25-.57-2.33-.57-1.08 0-1.42.55-2.31.59-.93.04-1.64-.95-2.23-1.82-1.21-1.76-2.14-4.97-.9-7.14.62-1.08 1.73-1.77 2.93-1.79.91-.02 1.76.62 2.32.62.56 0 1.6-.77 2.7-.66.46.02 1.75.19 2.58 1.42-.07.04-1.54.9-1.52 2.66ZM14.6 6.67c.49-.59.82-1.41.73-2.23-.71.03-1.57.47-2.08 1.06-.46.53-.86 1.37-.75 2.17.79.06 1.6-.4 2.1-1Z"/></svg>
+                  <span class="store-badge-copy"><strong>App Store</strong></span>
+                </div>
+                <div class="store-badge" aria-label="Coming soon on Google Play">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.2 2.7c-.35.35-.55.9-.55 1.58v15.44c0 .68.2 1.23.55 1.58l.1.1L13 12.7v-.2L4.3 2.6l-.1.1Z"/><path fill="currentColor" d="m15.9 15.6-2.9-2.9v-.2l2.9-2.9.1.06 3.45 1.96c.98.56.98 1.46 0 2.02L16 15.6l-.1.06Z"/><path fill="currentColor" d="m15.7 15.8-2.9-2.9-8.6 8.6c.36.38.95.42 1.63.03l9.87-5.6Z"/><path fill="currentColor" d="M4.2 2.7 12.8 12l2.9-2.9-9.87-5.6c-.68-.39-1.27-.35-1.63.03Z"/></svg>
+                  <span class="store-badge-copy"><strong>Google Play</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="eyebrow">Rooted in African creativity.</p>
+          <h1>Discover the brands <span class="headline-accent">building Africa.</span></h1>
+          <p class="hero-copy">The talent is here. The creativity is here. Now, finding the makers behind the products you love can be easier. Daya brings African brands and the makers behind them into view.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#features">Explore Daya <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="#for-businesses">For brands &amp; businesses</a>
+          </div>
+          <p class="hero-note">A new home for discovering the people and businesses building across Africa.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">What makes Daya different</p>
+            <h2>Less searching.<br>More discovering.</h2>
+          </div>
+          <p class="section-intro">Social media can make it hard to find every local brand in a category. Daya is designed to organise discovery, so shoppers can browse by what they want and find businesses making it.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="feature-number">01 / DISCOVER</span>
+            <div class="feature-mark" aria-hidden="true">⌕</div>
+            <h3>Browse by product type</h3>
+            <p>Explore categories such as fashion, beauty, electronics, home and more, then discover brands offering products in each category.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">02 / LOCAL FIRST</span>
+            <div class="feature-mark" aria-hidden="true">✳</div>
+            <h3>Find African makers</h3>
+            <p>Bring African brands and locally made alternatives into view, helping shoppers discover businesses they might otherwise miss.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">03 / BRAND STORES</span>
+            <div class="feature-mark" aria-hidden="true">▦</div>
+            <h3>Explore each brand</h3>
+            <p>Visit a store-style profile to learn about a business and browse the products it offers in one organised place.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">04 / PRODUCT SPOTLIGHTS</span>
+            <div class="feature-mark" aria-hidden="true">✦</div>
+            <h3>See products worth a look</h3>
+            <p>Spotlighted products and curated collections can help shoppers notice interesting finds and discover beyond familiar names.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">05 / WHOLESALE</span>
+            <div class="feature-mark" aria-hidden="true">↗</div>
+            <h3>Discover bulk offers</h3>
+            <p>Find products offered for wholesale and see bulk-buying details, helping retailers and other business buyers explore supply options.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">06 / OFFERS</span>
+            <div class="feature-mark" aria-hidden="true">%</div>
+            <h3>Find deals and offers</h3>
+            <p>Browse eligible discounted products and wholesale offers in addition to everyday product discovery.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement" id="about">
+      <div class="wrap">
+        <blockquote>“What if finding an African shoe brand was as simple as choosing <span>Shoes?</span>”</blockquote>
+      </div>
+    </section>
+
+    <section class="content-section" id="how-it-works">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Made for discovery</p>
+            <h2>A simpler path from interest to brand.</h2>
+          </div>
+          <p class="section-intro">Daya brings product categories, brand profiles and product listings together, making it easier to move from “I’m looking for this” to “Here are businesses that make it.”</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">STEP 01</div>
+            <h3>Choose what you need</h3>
+            <p>Start with a product type or collection instead of relying only on scattered posts and broad social searches.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">STEP 02</div>
+            <h3>Explore brands and products</h3>
+            <p>Browse makers, visit their store profiles, and see the products they have listed.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">STEP 03</div>
+            <h3>Connect with local business</h3>
+            <p>Discover new names, compare options, and find businesses behind products you want to learn more about.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="for-businesses">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">For the people building</p>
+            <h2>More visibility for local businesses.</h2>
+          </div>
+          <p class="section-intro">Daya is designed to help African brands and manufacturers present their products in an organised place where shoppers can discover them by category.</p>
+        </div>
+        <div class="audience">
+          <article class="audience-card">
+            <p class="audience-label">For brands &amp; makers</p>
+            <h3>Show people what you make.</h3>
+            <p>Create a dedicated store presence, organise your products, and help more shoppers find your business through product-focused discovery.</p>
+          </article>
+          <article class="audience-card">
+            <p class="audience-label">For shoppers &amp; buyers</p>
+            <h3>Find your next local favourite.</h3>
+            <p>Explore African brands, discover alternatives, and browse retail or wholesale products from businesses in one place.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="wrap">
+        <p class="section-kicker">Inspired by Africa. Made for discovery.</p>
+        <h2>Let’s make African brands easier to find.</h2>
+        <p>Daya is a Hive Labs product with a simple ambition: help more people discover the makers and businesses building across Africa.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#features">Discover what Daya is about</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <p class="copyright">© <span id="year">2026</span> Daya · A Hive Labs product</p>
+      <nav class="links" aria-label="Legal links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Agreement</a>
+      </nav>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
